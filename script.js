@@ -16,7 +16,7 @@ function getData() {
 function printChartJs(data) {
  var ctx = document.getElementById("myChart").getContext("2d");
  new Chart(ctx, {
-  type:"bar",
+  type:"line",
   data:{
    label:moment.months(),
    data:data
