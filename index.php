@@ -21,7 +21,6 @@
     <script src="/script.js" charset="utf-8"></script>
   </head>
   <body>
-   <h1>hello world</h1>
    <div class="wrapper">
     <canvas id="myChart"></canvas>
    </div>

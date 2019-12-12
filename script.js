@@ -15,11 +15,14 @@ function getData() {
 
 function printChartJs(data) {
  var ctx = document.getElementById("myChart").getContext("2d");
- new Chart(ctx, {
+ var myChart = new Chart(ctx, {
   type:"line",
   data:{
-   label:moment.months(),
-   data:data
+   labels:moment.months(),
+   datasets:[{
+    label:"vendite",
+    data:data
+   }]
   }
  });
 }
