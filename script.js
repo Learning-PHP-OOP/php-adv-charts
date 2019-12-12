@@ -20,8 +20,14 @@ function printChartJs(data) {
   data:{
    labels:moment.months(),
    datasets:[{
-    label:"vendite",
-    data:data
+    label:"Vendite",
+    data:data,
+    backgroundColor: [
+              'rgba(153, 102, 255, 0.2)',
+          ],
+          borderColor: [
+                    'rgba(153, 102, 255, 1)',
+                ]
    }]
   }
  });
