@@ -5,9 +5,9 @@ function getData() {
    method: "GET",
    success:function(data) {
             printChartJs(data);
-             console.log("primaData :", data.fatturato);
+             console.log("primaData :", data.fatturato); //debug
             SecondPrintChartJs(data);
-             console.log("SecondData :", data.fatturato_by_agent);
+             console.log("SecondData :", data.fatturato_by_agent);//debug
    },
    error: function(error) {
      console.log("error", error);
@@ -17,12 +17,12 @@ function getData() {
 
 function printChartJs(data) {
  var general1 = data.fatturato;
-  console.log("fatturato : ", general1.type);
+  console.log("fatturato : ", general1.type);//debug
  var valore1 = Object.values(general1["data"]);
-  console.log("valore 1",valore1);
+  console.log("valore 1",valore1);//debug
  var ctx = document.getElementById("myChart").getContext("2d");
  var myChart = new Chart(ctx, {
-  type:"line",
+  type:general1["type"],
   data:{
    labels:moment.months(),
    datasets:[{
@@ -41,11 +41,11 @@ function printChartJs(data) {
 
 function SecondPrintChartJs(data) {
  var general = data.fatturato_by_agent;
-  console.log("fatturato by agent : ", general.type);
+  console.log("fatturato by agent : ", general.type);//debug
  var chiave = Object.keys(general["data"]); // restituisce un array contenente le proprietà enumerabili di un dato oggetto, nel medesimo ordine fornito da un ciclo for...in
- console.log("chiave 2 ",chiave);
+ console.log("chiave 2 ",chiave);//debug
  var valore = Object.values(general["data"]); //restituisce un array di valori di proprietà enumerabili propri di un determinato oggetto, nello stesso ordine di quello fornito da un ciclo for ... in
- console.log("valore 2 ", valore);
+ console.log("valore 2 ", valore);//debug
 
  var ctx = document.getElementById("myChart2").getContext("2d");
  var myChart = new Chart(ctx, {
