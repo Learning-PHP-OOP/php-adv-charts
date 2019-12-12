@@ -50,6 +50,9 @@ function SecondPrintChartJs(data) {
           ],
           borderColor: [
                     'rgba(153, 102, 255, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(153, 102, 255, 1)',
                 ]
    }]
   }
