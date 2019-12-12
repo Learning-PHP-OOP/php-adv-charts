@@ -17,9 +17,10 @@ function SecondGetData() {
  $.ajax({
    url: "secondoServer.php",
    method: "GET",
-   success: function(data) {
-       SecondPrintChartJs(data); //so che l'errore è qui ma non riesco neanche a vedere il console.log
-       console.log("SecondData :", data);
+   success:function(data) {
+            //console.log("SecondData :", data.fatturato_by_agent);
+             SecondPrintChartJs(data);
+
    },
    error: function(error) {
      console.log("error", error);
@@ -27,15 +28,20 @@ function SecondGetData() {
  });
 }
 
-function SecondPrintChartJs(data, type, labels) {
+function SecondPrintChartJs(data) {
+ var general = data.fatturato_by_agent;
+ console.log(general.type);
+ var chiave = Object.keys(general["data"]); // restituisce un array contenente le proprietà enumerabili di un dato oggetto, nel medesimo ordine fornito da un ciclo for...in
+ var valore = Object.values(general["data"]); //restituisce un array di valori di proprietà enumerabili propri di un determinato oggetto, nello stesso ordine di quello fornito da un ciclo for ... in
+ console.log(valore);
+
  var ctx = document.getElementById("myChart2").getContext("2d");
  var myChart = new Chart(ctx, {
-  type:type,
+  type:general["type"],
   data:{
-   labels:labels,
+   labels:chiave,
    datasets:[{
-    label:"Fatturato Agenti",
-    data:data,
+    data:valore,
     backgroundColor: [
        'rgba(54, 162, 235, 0.2)',
        'rgba(255, 206, 86, 0.2)',
@@ -72,5 +78,6 @@ function printChartJs(data) {
 
 function init() {
   getData();
+  SecondGetData();
 }
 $(document).ready(init);
