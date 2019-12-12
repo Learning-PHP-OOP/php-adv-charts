@@ -21,8 +21,15 @@
     <script src="/script.js" charset="utf-8"></script>
   </head>
   <body>
+   
+   <!-- step 1 -->
    <div class="wrapper">
     <canvas id="myChart"></canvas>
+   </div>
+
+   <!-- step 2 -->
+   <div class="wrapper">
+    <canvas id="myChart2"></canvas>
    </div>
 
   </body>
