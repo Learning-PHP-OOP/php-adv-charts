@@ -27,6 +27,8 @@
     <canvas id="myChart"></canvas>
     <!-- step 2 -->
     <canvas id="myChart2"></canvas>
+    <!-- step 3 -->
+    <canvas id="myChart3"></canvas>
    </div>
 
   </body>

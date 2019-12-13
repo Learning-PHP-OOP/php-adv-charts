@@ -1,4 +1,10 @@
 
+function init() {
+  getData();
+}
+$(document).ready(init);
+
+
 function getData() {
  $.ajax({
    url: "server.php",
@@ -8,6 +14,8 @@ function getData() {
              console.log("primaData :", data.fatturato); //debug
             SecondPrintChartJs(data);
              console.log("SecondData :", data.fatturato_by_agent);//debug
+            thirdPrintChartJs(data);
+            console.log("thirdData: ", data.team_efficiency);
    },
    error: function(error) {
      console.log("error", error);
@@ -71,24 +79,39 @@ function SecondPrintChartJs(data) {
  });
 }
 
-function init() {
-  getData();
+function thirdPrintChartJs(data) {
+ var general3 = data.team_efficiency;
+ console.log("team_efficiency :", general3);
+ var chiave3 = Object.keys(general3["data"]);
+ console.log("chiave 3 : ", chiave3);
+ var valore3 = Object.values(general3["data"]);
+ console.log("valore tre di1: ", valore3[0]);
+ console.log("valore tre di2: ", valore3[1]);
+ console.log("valore tre di3: ", valore3[2]);
+ var ctx = document.getElementById("myChart3").getContext("2d");
+ var myChart = new Chart(ctx, {
+  type:general3["type"],
+  data:{
+   labels:moment.months(),
+   datasets:[
+    {
+    data:valore3[0],
+    label:chiave3[0],
+    backgroundColor:'rgba(153, 102, 255, 0.2)',
+    borderColor: 'rgba(153, 102, 255, 1)',
+   },
+   {
+    data:valore3[1],
+    label:chiave3[1],
+    backgroundColor:'rgba(75, 192, 192, 0.2)',
+    borderColor: 'rgba(75, 192, 192, 1)',
+   },
+   {
+    data:valore3[2],
+    label:chiave3[2],
+    backgroundColor:'rgba(255, 206, 86, 0.2)',
+    borderColor: 'rgba(255, 206, 86, 1)',
+   }]
+  }
+ });
 }
-$(document).ready(init);
-
-
-
-//primo esperimento riuscito ma adesso ho unito le funzioni get data in una
-//function getData() {
-// $.ajax({
-  // url: "server.php",
-   //method: "GET",
- //  success: function(data) {
-   //    printChartJs(data);
-    //   console.log("data", data);
-  // },
-  // error: function(error) {
-    // console.log("error", error);
-   //}
- //});
-//}
