@@ -1,21 +1,17 @@
-
-function init() {
-  getData();
-}
-$(document).ready(init);
-
-
 function getData() {
+
  $.ajax({
    url: "server.php",
    method: "GET",
    success:function(data) {
-            printChartJs(data);
-             console.log("primaData :", data.fatturato); //debug
-            SecondPrintChartJs(data);
-             console.log("SecondData :", data.fatturato_by_agent);//debug
-            thirdPrintChartJs(data);
-            console.log("thirdData: ", data.team_efficiency);
+
+             printChartJs(data);
+              console.log("primaData :", data.fatturato); //debug
+             SecondPrintChartJs(data);
+              console.log("SecondData :", data.fatturato_by_agent);//debug
+             thirdPrintChartJs(data);
+             console.log("thirdData: ", data.team_efficiency);//debug
+
    },
    error: function(error) {
      console.log("error", error);
@@ -50,10 +46,10 @@ function printChartJs(data) {
 function SecondPrintChartJs(data) {
  var general = data.fatturato_by_agent;
   console.log("fatturato by agent : ", general.type);//debug
- var chiave = Object.keys(general["data"]); // restituisce un array contenente le proprietà enumerabili di un dato oggetto, nel medesimo ordine fornito da un ciclo for...in
- console.log("chiave 2 ",chiave);//debug
- var valore = Object.values(general["data"]); //restituisce un array di valori di proprietà enumerabili propri di un determinato oggetto, nello stesso ordine di quello fornito da un ciclo for ... in
- console.log("valore 2 ", valore);//debug
+ var chiave = Object.keys(general["data"]);
+  console.log("chiave 2 ",chiave);//debug
+ var valore = Object.values(general["data"]);
+  console.log("valore 2 ", valore);//debug
 
  var ctx = document.getElementById("myChart2").getContext("2d");
  var myChart = new Chart(ctx, {
@@ -80,14 +76,14 @@ function SecondPrintChartJs(data) {
 }
 
 function thirdPrintChartJs(data) {
- var general3 = data.team_efficiency;
- console.log("team_efficiency :", general3);
+ var general3 = data.team_efficiency;//debug
+  console.log("team_efficiency :", general3);//debug
  var chiave3 = Object.keys(general3["data"]);
- console.log("chiave 3 : ", chiave3);
+  console.log("chiave 3 : ", chiave3);//debug
  var valore3 = Object.values(general3["data"]);
- console.log("valore tre di1: ", valore3[0]);
- console.log("valore tre di2: ", valore3[1]);
- console.log("valore tre di3: ", valore3[2]);
+  console.log("valore tre di1: ", valore3[0]);//debug
+  console.log("valore tre di2: ", valore3[1]);//debug
+  console.log("valore tre di3: ", valore3[2]);//debug
  var ctx = document.getElementById("myChart3").getContext("2d");
  var myChart = new Chart(ctx, {
   type:general3["type"],
@@ -115,3 +111,8 @@ function thirdPrintChartJs(data) {
   }
  });
 }
+
+function init() {
+  getData();
+}
+$(document).ready(init);

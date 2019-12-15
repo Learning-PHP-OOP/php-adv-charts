@@ -19,17 +19,63 @@
     <link rel="stylesheet" href="/style.css">
     <!-- JS: MY SCRIPT -->
     <script src="/script.js" charset="utf-8"></script>
+
+    <?php
+    $level = $_GET["level"];
+      if ($level == "guest") {
+        echo '<style type="text/css">
+          .wrapper {
+            display: block;
+            background-color:white;
+            border-radius:20px;
+          }
+          #presentazione{
+           display:none;
+          }
+          </style>';
+      } else if ($level == 'employee') {
+        echo '<style type="text/css">
+          .wrapper, .wrapper2 {
+            display: block;
+            background-color:white;
+            border-radius:20px;
+          }
+          #presentazione{
+           display:none;
+          }
+          </style>';
+      } else if ($level == 'clevel') {
+        echo '<style type="text/css">
+          .wrapper, .wrapper2, .wrapper3 {
+            display: block;
+            background-color:white;
+            border-radius:20px;
+          }
+          #presentazione{
+           display:none;
+          }
+          </style>';
+      }
+    ?>
   </head>
   <body>
 
-   <div class="wrapper">
-    <!-- step 1 -->
-    <canvas id="myChart"></canvas>
-    <!-- step 2 -->
-    <canvas id="myChart2"></canvas>
-    <!-- step 3 -->
-    <canvas id="myChart3"></canvas>
+   <div id="presentazione">
+    <span>Per accedere ai dati specifica se sei un guest , un employee o un clevel nell'url. </span>
    </div>
 
-  </body>
+   <!-- step 1 -->
+    <div class="wrapper">
+     <canvas id="myChart"></canvas>
+    </div>
+    <!-- step 2 -->
+    <div class="wrapper2">
+     <canvas id="myChart2"></canvas>
+    </div>
+    <!-- step 3 -->
+    <div class="wrapper3">
+     <canvas id="myChart3"></canvas>
+    </div>
+
+ </body>
 </html>
